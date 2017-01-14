@@ -1,11 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using World.Web.Models;
 
 namespace World.Web.Repository
@@ -29,7 +26,7 @@ namespace World.Web.Repository
         public IEnumerable<City> GetAll()
         {
             
-            return Connection.Query<City>("SELECT * FROM city");
+            return Connection.Query<City>("SELECT * FROM city ORDER BY name ASC");
 
         }
     }
