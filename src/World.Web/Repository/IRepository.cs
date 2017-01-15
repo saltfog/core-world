@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace World.Web.Repository
 {
     public interface IRepository
     {
-        IEnumerable<City> GetAll();
+        List<City> GetAll();
+        List<SelectListItem> GetSelectList();
     }
 }

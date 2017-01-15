@@ -23,5 +23,10 @@ namespace World.Web.Controllers
         {
             return View(_repo.GetAll());
         }
+
+        public IActionResult Select()
+        {
+            return View(_repo.GetAll());
+        }
     }
 }

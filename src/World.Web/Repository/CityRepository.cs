@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Collections.Generic;
@@ -26,8 +27,16 @@ namespace World.Web.Repository
         public IEnumerable<City> GetAll()
         {
             
-            return Connection.Query<City>("SELECT * FROM city ORDER BY name ASC");
+            var list = Connection.Query<City>("SELECT * FROM city ORDER BY name ASC");
+            return list;
 
         }
+
+        public IEnumerable<City> Cities()
+        {
+            var list = Connection.Query<City>("SELECT id, name FROM city ORDER BY name ASC");
+            return list;
+        }
+
     }
 }
