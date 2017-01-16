@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="js/knockoutmapping.js" />
 /// <reference path="js/site.js" />
 /// <reference path="js/worldscripts.js" />
 /// <reference path="lib/backbone/backbone.js" />
