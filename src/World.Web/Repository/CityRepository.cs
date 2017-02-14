@@ -26,7 +26,7 @@ namespace World.Web.Repository
 
         public IEnumerable<City> GetAll()
         {
-            
+
             var list = Connection.Query<City>("SELECT * FROM city ORDER BY name ASC");
             return list;
 
@@ -35,6 +35,12 @@ namespace World.Web.Repository
         public IEnumerable<City> Cities()
         {
             var list = Connection.Query<City>("SELECT id, name FROM city ORDER BY name ASC");
+            return list;
+        }
+
+        public IEnumerable<FilterList> Filter()
+        {
+            var list = Connection.Query<FilterList>("select co.continent, co.name AS country, ci.name AS city from country co left join city ci on co.code = ci.countrycode order by co.continent, co.name, ci.name");
             return list;
         }
 

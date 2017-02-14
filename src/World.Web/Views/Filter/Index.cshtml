@@ -1,0 +1,96 @@
+﻿@{
+
+}
+
+    <h2>World Filter</h2>
+
+    <div class="container-fluid">
+        <div class="form-group">
+            <div class="col-md-4" data-bind="foreach: selectFilterVM.selectFilters">
+                <label data-bind="text: nameLabel"></label>
+
+                <select class="form-control" data-bind="attr: { multiple: multiSelect }, options: availableValues,
+                value: value,
+                selectedOptions: values"></select>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <ul data-bind="foreach: selectFilterVM.activeFilters">
+                        <li>
+                            <span font-weight:bold" data-bind="text: nameLabel"></span>
+
+                            <span data-bind="text: valueText"></span>
+
+                            <a href="#" font-weight:bold" data-bind="event:{ click: reset }">Clear</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div style="top: 20px;" class="col-md-12">
+                    <table class="table table-striped table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Continent
+                                </th>
+                                <th>
+                                    Country
+                                </th>
+                                <th>
+                                    City
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: selectFilterVM.selectedItems">
+                            <tr>
+                                <td data-bind="text: continent"></td>
+                                <td data-bind="text: country"></td>
+                                <td data-bind="text: city"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        // Define the filtering select controls this way.
+        // Parameters to selectFilter() are:
+        //   name:         name of property to filter on
+        //   parentName:   name of master select control's property
+        //   model:        the model object for this view
+        //   multiselect:  whether to allow selection of multiple values
+        function loadSelects(model) {
+            new selectFilter('continent', '', model, 'Continent', true);
+            new selectFilter('country', 'continent', model, 'Country', false);
+            new selectFilter('city', 'country', model, 'City', false);
+        }
+
+        var viewModel = function () {
+            this.selectFilterVM = new sfViewModel(this);
+        };
+
+
+        var AllItems = [];
+
+        $(document).ready(function () {
+            var model = new viewModel();
+            // specify the method to load the select filters.
+            model.selectFilterVM.loadSelectsFunc = loadSelects;
+
+            $.ajax("filter/world", {
+                type: "GET",
+                cache: true,
+            }).done(function (jsondata) {
+                model.selectFilterVM.loadListFromArray({ AllItems: jsondata });
+
+            });
+
+        }); jQuery();
+
+    </script>
+}
