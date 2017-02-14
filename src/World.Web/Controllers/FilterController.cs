@@ -12,11 +12,11 @@ namespace World.Web.Controllers
 {
     public class FilterController : Controller
     {
-        private readonly CityRepository _repo;
+        private readonly Repository.Repository _repo;
 
         public FilterController(IConfiguration configuration)
         {
-            _repo = new CityRepository(configuration);
+            _repo = new Repository.Repository(configuration);
         }
 
         // GET: /<controller>/

@@ -8,10 +8,10 @@ using World.Web.Models;
 
 namespace World.Web.Repository
 {
-    public class CityRepository
+    public class Repository
     {
         private string connectionString;
-        public CityRepository(IConfiguration configuration)
+        public Repository(IConfiguration configuration)
         {
             connectionString = configuration.GetValue<string>("DBInfo:ConnectionString");
         }
@@ -41,6 +41,11 @@ namespace World.Web.Repository
         public IEnumerable<FilterList> Filter()
         {
             var list = Connection.Query<FilterList>("select co.continent, co.name AS country, ci.name AS city from country co left join city ci on co.code = ci.countrycode order by co.continent, co.name, ci.name");
+            return list;
+        }
+        public IEnumerable<LifeExp> LifeExp()
+        {
+            var list = Connection.Query<LifeExp>("select co.name, MAX(co.lifeexpectancy) from country co group by co.name, co.lifeexpectancy order by co.lifeexpectancy DESC");
             return list;
         }
 
