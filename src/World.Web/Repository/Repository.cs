@@ -45,7 +45,7 @@ namespace World.Web.Repository
         }
         public IEnumerable<LifeExp> LifeExp()
         {
-            var list = Connection.Query<LifeExp>("select co.name, MAX(co.lifeexpectancy) from country co group by co.name, co.lifeexpectancy order by co.lifeexpectancy DESC");
+            var list = Connection.Query<LifeExp>("select co.name AS country, MAX(co.lifeexpectancy) AS lifeexpectancy from country co group by co.name, co.lifeexpectancy order by co.lifeexpectancy DESC");
             return list;
         }
 

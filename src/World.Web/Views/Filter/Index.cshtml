@@ -65,7 +65,7 @@
         //   model:        the model object for this view
         //   multiselect:  whether to allow selection of multiple values
         function loadSelects(model) {
-            new selectFilter('continent', '', model, 'Continent', true);
+            new selectFilter('continent', '', model, 'Continent', false);
             new selectFilter('country', 'continent', model, 'Country', false);
             new selectFilter('city', 'country', model, 'City', false);
         }

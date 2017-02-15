@@ -4,6 +4,7 @@
 /// <reference path="lib/backbone/backbone.js" />
 /// <reference path="lib/blueimp-file-upload/js/jquery.fileupload.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
+/// <reference path="lib/chart.js/dist/Chart.js" />
 /// <reference path="lib/jets/jets.min.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/jquery-validation/dist/jquery.validate.js" />
