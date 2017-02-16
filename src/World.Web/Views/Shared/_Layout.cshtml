@@ -20,6 +20,7 @@
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/custom.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/knockout/dist/knockout.js"></script>
@@ -119,6 +120,9 @@
                         </ul>
                     </div>
                 </nav>
+                <div id="spinner" class="spinner" style="display:none;">
+                    <img id="img-spinner" src="~/images/loader.gif" />
+                </div>
             </div>
         </div>
     </div>

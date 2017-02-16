@@ -30,7 +30,6 @@ ko.observableArray.fn.loadByProperties = function (propNames, matchValues) {
     }
 }
 
-
 // selectFilter objects represent a heirarchical filter that uses a SELECT control.
 function selectFilter(selectName, parentName, viewmodel, label, multi) {
     this.name = selectName;                             // property name to filter on
@@ -228,5 +227,4 @@ function sfViewModel(_parent) {
             this.setSelectedItems();
         }
     }
-
 };

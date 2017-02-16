@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using World.Web.Repository;
 using Microsoft.Extensions.Configuration;
+using System.Threading;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,6 +29,7 @@ namespace World.Web.Controllers
         [HttpGet("filter/world")]
         public IActionResult Filter()
         {
+            Thread.Sleep(1000);
             var results = _repo.Filter();
             return Json(results);
         }

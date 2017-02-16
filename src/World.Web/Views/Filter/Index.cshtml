@@ -3,7 +3,6 @@
 }
 
     <h2>World Filter</h2>
-
     <div class="container-fluid">
         <div class="form-group">
             <div class="col-md-4" data-bind="foreach: selectFilterVM.selectFilters">
@@ -54,10 +53,9 @@
             </div>
         </div>
     </div>
-
 @section scripts{
     <script type="text/javascript">
-
+        $(".spinner").show();
         // Define the filtering select controls this way.
         // Parameters to selectFilter() are:
         //   name:         name of property to filter on
@@ -78,6 +76,7 @@
         var AllItems = [];
 
         $(document).ready(function () {
+
             var model = new viewModel();
             // specify the method to load the select filters.
             model.selectFilterVM.loadSelectsFunc = loadSelects;
@@ -85,7 +84,9 @@
             $.ajax("filter/world", {
                 type: "GET",
                 cache: true,
+
             }).done(function (jsondata) {
+
                 model.selectFilterVM.loadListFromArray({ AllItems: jsondata });
 
             });
