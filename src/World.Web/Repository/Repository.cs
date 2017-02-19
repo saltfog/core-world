@@ -55,7 +55,7 @@ namespace World.Web.Repository
         {
             if(search != null)
             search = search.TrimStart('0');
-            var query = @"select code, name from country WHERE name LIKE '%" + @search + "%'";
+            var query = @"select code, name, continent from country WHERE name LIKE '%" + @search + "%' order by name";
 
 
             return (Connection.Query<Country>(query, new { search = search })).ToList();

@@ -10,10 +10,7 @@
         <label for="FindByCountry" class="col-sm-2 control-label">Search Country:</label>
         <div class="col-sm-3">
             <div class="input-group">
-                <input type="text" id="FindByCountry" class="form-control col-md-4" autocomplete="off" placeholder="Lookup a country" autofocus="autofocus" />
-                <span class="input-group-addon">
-                    <span class="fa fa-search"></span>
-                </span>
+                <input type="text" id="FindByCountry" class="form-control col-md-3" autocomplete="off" placeholder="Lookup a country" autofocus="autofocus" />
             </div>
         </div>
     </div>
@@ -22,7 +19,7 @@
 <script>
     var searchCountry = function (query, process) {
         $('#FindByCountry').addClass('ui-autocomplete-loading');
-        $.get('@(Url.Action("SearchCountry"))', { search: query }, function ( data ) {
+        $.get('@(Url.Action("SearchCountry"))', { search: query }, function (data) {
             process(data);
             $('#FindByCountry').removeClass('ui-autocomplete-loading');
         })
@@ -31,17 +28,17 @@
     function countrySelected() {
         var $input = $('#FindByCountry');
         var current = $input.typeahead("getActive");
-
     }
 
-    $(function() {
+    $(function () {
         $('#FindByCountry').typeahead({
-            source: function ( query, process ) {
-                searchCountry( query, process );
+            source: function (query, process) {
+                searchCountry(query, process);
             },
             autoSelect: true,
             afterSelect: countrySelected,
-            minLength: 1
+            minLength: 2,
+            showHintOnFocus: false
         });
     })
 </script>
