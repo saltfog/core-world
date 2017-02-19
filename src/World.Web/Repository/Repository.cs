@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using World.Web.Models;
 
 namespace World.Web.Repository
@@ -49,5 +51,14 @@ namespace World.Web.Repository
             return list;
         }
 
+        public IEnumerable <Country> SearchCountry(string search)
+        {
+            if(search != null)
+            search = search.TrimStart('0');
+            var query = @"select code, name from country WHERE name LIKE '%" + @search + "%'";
+
+
+            return (Connection.Query<Country>(query, new { search = search })).ToList();
+        }
     }
 }

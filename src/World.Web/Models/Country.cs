@@ -8,9 +8,9 @@ namespace World.Web.Models
 {
     public class Country
     {
-        public string CountryCode { get; set; }
-        public string Name { get; set; }
-        public string Continent { get; set; }
-        public string Region { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        //public string Continent { get; set; }
+        //public string Region { get; set; }
     }
 }
