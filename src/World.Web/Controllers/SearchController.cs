@@ -27,8 +27,8 @@ namespace World.Web.Controllers
         [Route("SearchCountry")]
         public IActionResult SearchCountry(string search)
         {
-            var countrys = _repo.SearchCountry(search);
-            return Json(countrys);
+            var countries = _repo.SearchCountry(search);
+            return Json(countries);
         }
     }
 }
