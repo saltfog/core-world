@@ -49,9 +49,9 @@
                     return true;
                 }
             },
-            updater: function (item) {
-            countrySelected = item.name;
-            return item;
+            updater: function(item){
+                console.log("'" + item + "' selected.");
+                return item;
 
         }
         });
