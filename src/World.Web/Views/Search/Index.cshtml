@@ -43,7 +43,7 @@
             autoSelect: true,
             afterSelect: countrySelected,
             minLength: 2,
-            showHintOnFocus: false,
+            showHintOnFocus: true,
             matcher: function (item) {
                 if (item.name.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
                     return true;
