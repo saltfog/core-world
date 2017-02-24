@@ -18,13 +18,15 @@
         </div>
     </div>
 </div>
+<hr />
+<cite id="population">
+
+</cite>
 
 <script>
     var searchCountry = function (query, process) {
-        $('#FindByCountry').addClass('ui-autocomplete-loading');
         $.get('@(Url.Action("SearchCountry"))', { search: query }, function (data) {
             process(data);
-            $('#FindByCountry').removeClass('ui-autocomplete-loading');
         })
     };
 
@@ -32,7 +34,6 @@
         var $input = $('#FindByCountry');
         var current = $input.typeahead("getActive");
     }
-
 
     $(function () {
         $('#FindByCountry').typeahead({
@@ -42,7 +43,16 @@
             autoSelect: true,
             afterSelect: countrySelected,
             minLength: 2,
-            showHintOnFocus: false
+            //updater: countrySelected,
+            showHintOnFocus: false,
+            function (data) {
+                countries = data.d;
+                var code = _.map(countries, function (c) {
+                    return c.code;
+                });
+                return process(code);
+            }
         });
     })
+
 </script>

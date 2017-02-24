@@ -11,5 +11,4 @@
 /// <reference path="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" />
 /// <reference path="lib/knockback/knockback.js" />
 /// <reference path="lib/knockout/dist/knockout.js" />
-/// <reference path="lib/underscore.string/dist/underscore.string.js" />
 /// <reference path="lib/underscore/underscore.js" />
