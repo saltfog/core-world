@@ -24,7 +24,8 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Dapper": "1.50.2",
     "Npgsql": "3.1.9",
-    "Bootstrap-3-Typeahead": "4.0.2"
+    "Bootstrap-3-Typeahead": "4.0.2",
+    "TagHelperSamples.Bootstrap": "1.1.1"
   },
 
   "tools": {

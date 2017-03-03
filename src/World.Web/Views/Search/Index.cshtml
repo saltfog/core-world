@@ -1,58 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@addTagHelper *, TagHelperSamples.Bootstrap
+@model IEnumerable<World.Web.Models.Country>
+
 @{
+    ViewData["Title"] = "Search";
+    string search = ViewBag.Search;
 }
 
+<h2><i class="glyphicon glyphicon-search"></i> @ViewBag.Title</h2>
 
-<div class="form-horizontal">
-    <div class="form-group">
-        <label for="FindByCountry" class="col-sm-2 control-label">Search Country:</label>
-        <div class="col-sm-3">
-            <div class="input-group">
-                <input type="text" id="FindByCountry" class="form-control col-md-3" autocomplete="off" placeholder="Lookup a country" autofocus="autofocus" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search"></span>
-                </span>
-            </div>
+<div id="account-search" class="row hidden-print">
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Search for an Country" autofocus>
+            <span class="input-group-btn">
+                <button id="search-button" class="btn btn-default"><i class="fa fa-search">&nbsp;</i> Search</button>
+            </span>
         </div>
     </div>
 </div>
-<hr />
-<cite id="population">
 
-</cite>
+@if ((search?.Any() ?? false) && (!Model?.Any() ?? false))
+{
+    <alert class="col-md-4" message="No Countries" icon="info">
+    </alert>
+}
 
-<script>
-    var searchCountry = function (query, process) {
-        $.get('@(Url.Action("SearchCountry"))', { search: query }, function (data) {
-            process(data);
-        })
-    };
+@if (Model?.Any() ?? false)
+{
+    <hr />
+    <div class="col-md-6 results">
+        @foreach (var u in Model.OrderBy(u => u.continent).ThenBy(u => u.name).ThenBy(u => u.code))
+        {
+            <p> <strong>@u.continent </strong>, @u.name, @u.region : @u.population <span class="label label-info">@u.code</span></p> }
+    </div>
+}
+<div class="clearfix"></div>
 
-    function countrySelected() {
-        var $input = $('#FindByCountry');
-        var current = $input.typeahead("getActive");
-    }
+@section Scripts {
+    <script type="text/javascript">
+		$(function () {
+			//handle search...
+			$(document).on('click.search', '#search-button', function () {
+				var params = $('#account-search').find("input").serialize();
+				var url = '@Url.Action("Index", "Search")';
 
-    $(function () {
-        $('#FindByCountry').typeahead({
-            source: function (query, process) {
-                searchCountry(query, process);
-            },
-            autoSelect: true,
-            afterSelect: countrySelected,
-            minLength: 2,
-            //updater: countrySelected,
-            showHintOnFocus: false,
-            function (data) {
-                countries = data.d;
-                var code = _.map(countries, function (c) {
-                    return c.code;
-                });
-                return process(code);
-            }
-        });
-    })
+				if (params)
+					url += '?' + params;
 
-</script>
+				location.href = url;
+			});
+
+			//trigger search on enter key...
+			$('#search').keyup(function (e) {
+				if (e.keyCode == 13) {
+					$('#search-button').trigger('click');
+					//$(this).trigger("enterKey");
+				}
+			});
+		});
+    </script>
+}

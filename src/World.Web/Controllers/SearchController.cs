@@ -18,17 +18,15 @@ namespace World.Web.Controllers
             _repo = new Repository.Repository(configuration);
         }
         // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        [HttpGet]
-        [Route("SearchCountry")]
-        public IActionResult SearchCountry(string search)
+        public IActionResult Index(string search)
         {
-            var countrys = _repo.SearchCountry(search);
-            return Json(countrys);
+            if (search?.Any() ?? false)
+            {
+                ViewBag.Search = search;
+                return View(_repo.SearchCountry(search));
+            }
+            return View();
         }
     }
 }
