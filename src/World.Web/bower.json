@@ -7,11 +7,12 @@
     "jquery-validation": "1.15.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "font-awesome": "4.6.1",
-    "blueimp-file-upload": "9.12.3",
     "knockout": "3.4.0",
     "knockback": "1.0.0",
     "SpinKit": "1.2.5",
-    "Chart.js": "2.0.2"
+    "Chart.js": "2.0.2",
+    "x-editable": "1.5.1",
+    "typeahead.js": "0.11.1"
   },
   "resolutions": {
     "jquery-validation": "1.15.0",
