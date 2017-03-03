@@ -18,10 +18,10 @@
         </div>
     </div>
 </div>
-
+<br />
 @if ((search?.Any() ?? false) && (!Model?.Any() ?? false))
 {
-    <alert class="col-md-4" message="No Countries" icon="info">
+    <alert class="col-md-2" message="No Countries Found" icon="info">
     </alert>
 }
 
@@ -31,7 +31,7 @@
     <div class="col-md-6 results">
         @foreach (var u in Model.OrderBy(u => u.continent).ThenBy(u => u.name).ThenBy(u => u.code))
         {
-            <p> <strong>@u.continent </strong>, @u.name, @u.region : @u.population <span class="label label-info">@u.code</span></p> }
+            <p> <strong>@u.continent </strong> | @u.name | @u.region | @u.population <span class="label label-info">@u.code</span></p> }
     </div>
 }
 <div class="clearfix"></div>
