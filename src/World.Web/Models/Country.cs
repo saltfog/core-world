@@ -13,5 +13,6 @@ namespace World.Web.Models
         public string continent { get; set; }
         public string region { get; set; }
         public int population { get; set; }
+        public decimal lifeexpectancy { get; set; }
     }
 }
