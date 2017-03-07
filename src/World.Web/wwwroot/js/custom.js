@@ -1,8 +1,13 @@
 ﻿(function ($) {
 
     jQuery(window).load(function() {
-        jQuery(".spinner").delay(100).fadeOut("slow");
-        jQuery(".spinner").delay(100).fadeOut("slow");
+        //Show the loader
+        //$(".spinner").show();
+
+        $(href).load(this, function (result) {
+            //Hide when complete
+            $(".spinner").hide();
+        });
     });
 
 })(jQuery);
