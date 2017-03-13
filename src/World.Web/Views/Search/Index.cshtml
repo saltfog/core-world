@@ -21,8 +21,12 @@
 <br />
 @if ((search?.Any() ?? false) && (!Model?.Any() ?? false))
 {
-    <alert class="col-md-2" message="No Countries Found" icon="info">
-    </alert>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <strong>No Countries Found</strong>
+    </div>
 }
 
 @if (Model?.Any() ?? false)
