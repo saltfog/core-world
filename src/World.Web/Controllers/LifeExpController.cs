@@ -24,7 +24,7 @@ namespace World.Web.Controllers
         }
 
         [HttpGet("lifeexp/world")]
-        public IActionResult Filter()
+        public IActionResult LifeExp()
         {
             var results = _repo.LifeExp();
             return Json(results);
