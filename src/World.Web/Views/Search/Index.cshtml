@@ -11,7 +11,7 @@
 <div id="account-search" class="row hidden-print">
     <div class="col-md-4">
         <div class="input-group">
-            <input type="text" id="search" name="search" class="form-control" placeholder="Search for a Country" autofocus>
+            <input type="text" id="search" name="search" class="form-control" placeholder="Search for a Country"/>
             <span class="input-group-btn">
                 <button id="search-button" class="btn btn-default"><i class="fa fa-search">&nbsp;</i> Search</button>
             </span>
@@ -21,10 +21,7 @@
 <br />
 @if ((search?.Any() ?? false) && (!Model?.Any() ?? false))
 {
-    <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
+    <div id="alert" class="alert alert-info alert-dismissible col-md-3" role="alert">
         <strong>No Countries Found</strong>
     </div>
 }
@@ -35,8 +32,7 @@
     <div class="col-md-6 results">
         @foreach (var u in Model.OrderBy(u => u.continent).ThenBy(u => u.name).ThenBy(u => u.code))
         {
-            <p> <h3>@u.continent </h3> | <strong><em>@u.name</em></strong> | @u.region | @string.Format("{0:n0}", u.population) Pop. | <em class="text-info">@u.lifeexpectancy</em> Life Exp. <span class="label label-info">@u.code</span></p>
-
+	       <p><h3>@u.continent </h3> | <strong><em>@u.name</em></strong> | @u.region | @string.Format("{0:n0}", u.population) Pop. | <em class="text-info">@u.lifeexpectancy</em> Life Exp. <span class="label label-info">@u.code</span></p>
         }
     </div>
 }
@@ -55,6 +51,10 @@
 
 				location.href = url;
 			});
+
+	$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+});
 
 			//trigger search on enter key...
 			$('#search').keyup(function (e) {

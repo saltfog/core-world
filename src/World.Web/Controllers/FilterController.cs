@@ -29,9 +29,10 @@ namespace World.Web.Controllers
         [HttpGet("filter/world")]
         public IActionResult Filter()
         {
-            Thread.Sleep(1000);
             var results = _repo.Filter();
+            Thread.Sleep(8000);
             return Json(results);
+
         }
     }
 }

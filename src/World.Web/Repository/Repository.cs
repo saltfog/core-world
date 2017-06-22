@@ -54,8 +54,8 @@ namespace World.Web.Repository
         public IEnumerable <Country> SearchCountry(string search)
         {
             if (search != null)
-                search = search.TrimStart('0');
-            var query = @"select code, name, continent, region, population, lifeexpectancy from country WHERE name LIKE '%" + @search + "%' order by name";
+                search = search.TrimStart('0').ToUpper();
+            var query = @"select code, name, continent, region, population, lifeexpectancy from country WHERE UPPER(name) LIKE '%" + @search + "%' order by name";
 
 
             return (Connection.Query<Country>(query, new { search = search })).ToList();

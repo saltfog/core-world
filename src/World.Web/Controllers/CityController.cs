@@ -21,12 +21,7 @@ namespace World.Web.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(_repo.GetAll());
-        }
-
-        public IActionResult Select()
-        {
-            return View(_repo.GetAll());
+            return View(_repo.Cities());
         }
     }
 }
