@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using World.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace World.Web.Repository
 {
@@ -25,18 +26,20 @@ namespace World.Web.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-
-        public IEnumerable<City> GetAll()
+		[FormatFilter]
+		[HttpGet]
+		[HttpGet("/api/[controller].{format}")]
+		public IEnumerable<City> GetAll()
         {
 
-            var list = Connection.Query<City>("SELECT * FROM city ORDER BY name ASC");
+            var list = Connection.Query<City>("SELECT * FROM city");
             return list;
 
         }
 
         public IEnumerable<City> Cities()
         {
-            var list = Connection.Query<City>("SELECT id, name FROM city ORDER BY name ASC");
+            var list = Connection.Query<City>("SELECT id, name, countrycode, district, population FROM city order by name");
             return list;
         }
 

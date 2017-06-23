@@ -13,13 +13,13 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Name)
+                            @Html.DisplayNameFor(model => model.name)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.District)
+                            @Html.DisplayNameFor(model => model.district)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Population)
+                            @Html.DisplayNameFor(model => model.population)
                         </th>
                         <th></th>
                     </tr>
@@ -27,18 +27,18 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="jets-search-content">
-                            <strong> @Html.DisplayFor(modelItem => item.Name) </strong>
+                        <td>
+                            <strong> @Html.DisplayFor(modelItem => item.name) </strong>
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.District)
+                            @Html.DisplayFor(modelItem => item.district)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Population)
+                            @Html.DisplayFor(modelItem => item.population)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are sure wants to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @*<a asp-action="Edit" asp-route-id="@item.id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.id" onclick="return confirm('Are sure wants to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>*@
                         </td>
                     </tr>
                 }
@@ -59,7 +59,7 @@
 	            jets.search('search phrase')
 
 	            $('#show-all').click(function (e) {
-	                $('#lea-jets-search').val('').trigger({ type: 'keypress', which: 13 });
+	                $('#city-jets-search').val('').trigger({ type: 'keypress', which: 13 });
 	                cityInPlaceSearchJets.search();
 	            });
 

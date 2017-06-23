@@ -8,15 +8,15 @@ namespace World.Web.Models
 {
     public class City
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string CountryCode { get; set; }
-        public string District { get; set; }
-        public int Population { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string countrycode { get; set; }
+        public string district { get; set; }
+        public int population { get; set; }
 
         public IEnumerable<SelectListItem> Cities
         {
-            get { return new SelectList("Id", "Name"); }
+            get { return new SelectList("id", "name"); }
         }
     }
 }
