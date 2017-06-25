@@ -1,13 +1,19 @@
-﻿@model World.Web.Models.LifeExp
+﻿@model IEnumerable<World.Web.Models.Summary>
 @{
     ViewData["Title"] = "The World";
 }
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12-center">
             <i class="fa fa-globe fa-5x fa-align-center" aria-hidden="true"></i>
+			@foreach (var item in Model)
+			{
+			   @item.TotalCountries.Count();
+			   @item.TotalCities.Count();
+			   @item.TotalPopulation.Sum();
+			}
         </div>
-    </div>
+	</div>
 </div>
 

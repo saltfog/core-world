@@ -16,11 +16,11 @@
             <div class="col-md-4">
                 <ul data-bind="foreach: selectFilterVM.activeFilters">
                     <li>
-                        <span font-weight:bold" data-bind="text: nameLabel"></span>
+                        <span data-bind="text: nameLabel"></span>
 
                         <span data-bind="text: valueText"></span>
 
-                        <a href="#" font-weight:bold" data-bind="event:{ click: reset }">Clear</a>
+                        <a href="#" data-bind="event:{ click: reset }">Clear</a>
                     </li>
                 </ul>
             </div>

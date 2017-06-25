@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace World.Web.Controllers
 {
     public class HomeController : Controller
     {
+		private readonly Repository.Repository _repo;
+
+        public HomeController(IConfiguration configuration)
+		{
+			_repo = new Repository.Repository(configuration);
+		}
+		// GET: /<controller>/
         public IActionResult Index()
         {
             return View();
@@ -31,5 +39,12 @@ namespace World.Web.Controllers
         {
             return View();
         }
+	
+		public IActionResult Summary()
+		{
+            var results = _repo.GetSummary();
+			return View();
+		}
+
     }
 }
