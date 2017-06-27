@@ -1,19 +1,56 @@
-﻿@model IEnumerable<World.Web.Models.Summary>
+﻿@model IEnumerable<World.Web.Models.SummaryPage>
 @{
     ViewData["Title"] = "The World";
+
 }
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12-center">
             <i class="fa fa-globe fa-5x fa-align-center" aria-hidden="true"></i>
-			@foreach (var item in Model)
-			{
-			   @item.TotalCountries.Count();
-			   @item.TotalCities.Count();
-			   @item.TotalPopulation.Sum();
-			}
-        </div>
+		 <div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            All Countries
+        </h3>
+    </div>
+	<div>
+        <input type="search" class="form-control" id="city-jets-search" placeholder="Search" />
+    </div>
+    <div class="panel-body">
+      @foreach (var u in Model.OrderBy(u => u.countries).ThenBy(u => u.cities))
+        {
+            <ul>
+					<strong>@u.countries </strong>
+					<em> - @u.cities</em>
+            </ul>
+
+        }
+    </div>
+    <div class="panel-footer">
+       
+    </div>
+</div>
 	</div>
 </div>
+	@section Scripts{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.11.0/jets.min.js"></script>
+<script>
+        (function ($) {
+            $(function () {
+                var cityInPlaceSearchJets = new Jets({
+                    searchTag: '#city-jets-search',
+                    contentTag: '.jets-search-content'
+                });
 
+                jets.search('search phrase')
+
+                $('#show-all').click(function (e) {
+                    $('#city-jets-search').val('').trigger({ type: 'keypress', which: 13 });
+                    cityInPlaceSearchJets.search();
+                });
+                });
+		});
+
+</script>
+}

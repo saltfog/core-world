@@ -63,10 +63,10 @@ namespace World.Web.Repository
 
             return (Connection.Query<Country>(query, new { search = search })).ToList();
         }
-        public IEnumerable<Summary> GetSummary()
+        public IEnumerable<SummaryPage> GetSummary()
 		{
-            var list = Connection.Query<Summary>("select ci.name AS TotalCities, co.name AS TotalCountries, ci.population AS TotalPoulation from city ci join country co on ci.countrycode = co.code");
-			return list;
+            var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS poulation from city ci join country co on ci.countrycode = co.code order by co.name, ci.name");
+            return list.ToList();
 		}
     }
 }

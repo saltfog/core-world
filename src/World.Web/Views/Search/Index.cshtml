@@ -30,7 +30,7 @@
 {
     <hr />
     <div class="col-md-6 results">
-        @foreach (var u in Model.GroupBy(u => u.continent).ThenBy(u => u.name).ThenBy(u => u.code))
+        @foreach (var u in Model.OrderBy(u => u.continent).ThenBy(u => u.name).ThenBy(u => u.code))
         {
 	       <p><h3>@u.continent </h3> | <strong><em>@u.name</em></strong> | @u.region | @string.Format("{0:n0}", u.population) Pop. | <em class="text-info">@u.lifeexpectancy</em> Life Exp. <span class="label label-info">@u.code</span></p>
         }

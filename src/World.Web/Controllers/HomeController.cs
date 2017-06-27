@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using World.Web.Models;
 
 namespace World.Web.Controllers
 {
@@ -18,33 +20,7 @@ namespace World.Web.Controllers
 		// GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            return View(_repo.GetSummary());
         }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
-	
-		public IActionResult Summary()
-		{
-            var results = _repo.GetSummary();
-			return View();
-		}
-
     }
 }

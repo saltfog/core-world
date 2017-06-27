@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="Formatter\" />
-    <Folder Include="QUnit-Tests\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\summary.cs" />

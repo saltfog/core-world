@@ -6,7 +6,7 @@ namespace World.Web.Repository
 {
     public interface IRepository
     {
-        List<City> GetAll();
+        
         List<SelectListItem> GetSelectList();
         IEnumerable<FilterList> Get();
     }
