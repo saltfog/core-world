@@ -13,14 +13,19 @@
         </h3>
 			<br/>
     </div>
-      @foreach (var u in Model.OrderBy(u => u.countries).ThenBy(u => u.cities))
-        {
-            <ul>
-					<strong>@u.countries </strong>
-					<em> - @u.cities</em>
-            </ul>
-
-        }
+     (@(Html.Kendo().Grid(Model)
+.Name("Grid")
+.Columns(columns => {
+columns.Bound(p => p.countries).Groupable(true);
+columns.Bound(p => p.cities);
+columns.Bound(p => p.population);
+})
+.Pageable()
+.Sortable()
+.Scrollable()
+.Filterable()
+.Groupable()
+		)
     </div>
 </div>
 	@section Scripts{

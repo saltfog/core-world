@@ -39,6 +39,7 @@
     <PackageReference Include="bootstrap" Version="3.3.7" />
     <PackageReference Include="Npgsql" Version="3.2.4.1" />
     <PackageReference Include="KendoUICore" Version="2017.2.621" />
+    <PackageReference Include="Kendo.Mvc" Version="2016.2.630-Preview" />
   </ItemGroup>
 
   <ItemGroup>
