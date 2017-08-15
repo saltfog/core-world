@@ -65,7 +65,7 @@ namespace World.Web.Repository
         }
         public IEnumerable<SummaryPage> GetSummary()
 		{
-            var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS poulation from city ci join country co on ci.countrycode = co.code order by co.name, ci.name limit '20'");
+            var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS poulation from city ci join country co on ci.countrycode = co.code order by co.name, ci.name");
             return list.ToList();
 		}
     }

@@ -7,45 +7,27 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12-center">
-            <i class="fa fa-globe fa-5x fa-align-center" aria-hidden="true"></i>
-        <h3 class="panel-title">
-            All Countries
-        </h3>
-			<br/>
-    </div>
-     (@(Html.Kendo().Grid(Model)
-.Name("Grid")
-.Columns(columns => {
-columns.Bound(p => p.countries).Groupable(true);
-columns.Bound(p => p.cities);
-columns.Bound(p => p.population);
-})
-.Pageable()
-.Sortable()
-.Scrollable()
-.Filterable()
-.Groupable()
-		)
+    <table class="table table-striped">
+				<thead>
+      <tr>
+        <th>Countries</th>
+        <th>Cities</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var u in Model.OrderBy(u => u.countries).ThenBy(u => u.cities))
+        {
+			<tr>		
+            <td>
+                   <strong>@u.countries </strong>
+			</td>
+		    <td>
+                   <em> - @u.cities</em>
+           </td>
+		  </tr>
+        }
+    </tbody>
+  </table>
     </div>
 </div>
-	@section Scripts{
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.11.0/jets.min.js"></script>
-<script>
-        (function ($) {
-            $(function () {
-                var cityInPlaceSearchJets = new Jets({
-                    searchTag: '#city-jets-search',
-                    contentTag: '.jets-search-content'
-                });
 
-                jets.search('search phrase')
-
-                $('#show-all').click(function (e) {
-                    $('#city-jets-search').val('').trigger({ type: 'keypress', which: 13 });
-                    cityInPlaceSearchJets.search();
-                });
-                });
-		});
-
-</script>
-}
