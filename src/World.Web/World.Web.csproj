@@ -40,6 +40,7 @@
     <PackageReference Include="Npgsql" Version="3.2.4.1" />
     <PackageReference Include="KendoUICore" Version="2017.2.621" />
     <PackageReference Include="Kendo.Mvc" Version="2016.2.630-Preview" />
+    <PackageReference Include="Knockout-Kendo" Version="0.9.7" />
   </ItemGroup>
 
   <ItemGroup>

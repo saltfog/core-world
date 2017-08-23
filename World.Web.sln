@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F77A3522-ED7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{032ADFBE-3292-4A70-859D-BD9FA4BCC2D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "World.Web", "src\World.Web\World.Web.csproj", "{ABD780FA-A6DE-4CA9-AB03-21BF63AEAFF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "World.Web", "src\World.Web\World.Web.csproj", "{ABD780FA-A6DE-4CA9-AB03-21BF63AEAFF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,5 +25,14 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ABD780FA-A6DE-4CA9-AB03-21BF63AEAFF4} = {F77A3522-ED74-4988-819E-C3850F4D1B81}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 80
+		$1.TabsToSpaces = True
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.scope = text/x-csharp
 	EndGlobalSection
 EndGlobal
