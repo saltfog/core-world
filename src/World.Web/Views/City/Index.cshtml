@@ -1,89 +1,89 @@
-﻿@model IEnumerable<World.Web.Models.City>
+﻿    @model IEnumerable<World.Web.Models.City>
 
-@{
+    @{
 
-}
-<div class="container-fluid">
-    <div class="form-group">
-        <input type="search" class="form-control" id="city-jets-search" placeholder="Search" />
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.district)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.population)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <strong> @Html.DisplayFor(modelItem => item.name) </strong>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.district)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.population)
-                        </td>
-                        <td>
-                            @*<a asp-action="Edit" asp-route-id="@item.id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.id" onclick="return confirm('Are sure wants to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>*@
-                        </td>
-                    </tr>
-                }
-            </table>
+    }
+    <div class="container-fluid">
+        <div class="form-group">
+            <input type="search" class="form-control" id="city-jets-search" placeholder="Search" />
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.district)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.population)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <strong> @Html.DisplayFor(modelItem => item.name) </strong>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.district)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.population)
+                            </td>
+                            <td>
+                                @*<a asp-action="Edit" asp-route-id="@item.id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+                                <a asp-action="Delete" asp-route-id="@item.id" onclick="return confirm('Are sure wants to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>*@
+                            </td>
+                        </tr>
+                    }
+                </table>
+                </div>
             </div>
         </div>
-    </div>
-@section Scripts{
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.11.0/jets.min.js"></script>
-<script>
-	    (function ($) {
-	        $(function () {
-	            var cityInPlaceSearchJets = new Jets({
-	                searchTag: '#city-jets-search',
-	                contentTag: '.jets-search-content'
-	            });
+    @section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.11.0/jets.min.js"></script>
+    <script>
+    	    (function ($) {
+    	        $(function () {
+    	            var cityInPlaceSearchJets = new Jets({
+    	                searchTag: '#city-jets-search',
+    	                contentTag: '.jets-search-content'
+    	            });
 
-	            jets.search('search phrase')
+    	            jets.search('search phrase')
 
-	            $('#show-all').click(function (e) {
-	                $('#city-jets-search').val('').trigger({ type: 'keypress', which: 13 });
-	                cityInPlaceSearchJets.search();
-	            });
+    	            $('#show-all').click(function (e) {
+    	                $('#city-jets-search').val('').trigger({ type: 'keypress', which: 13 });
+    	                cityInPlaceSearchJets.search();
+    	            });
 
 
-	            //handle approve...
-	            $(document).on('click.approve', '.btn-approve', function (e) {
-	                e.preventDefault();
-	                $.ajax({
-	                    url: this.href,
-	                    type: 'post',
-	                    success: function (data, textStatus, jqXHR) {
-	                        location.href = location.href;
-	                    },
-	                    error: function (jqXHR, textStatus, errorThrown) {
-	                        mspModals.hideProcessing();
-	                        alert(errorThrown);
-	                    },
-	                    beforeSend: function () {
-	                        mspModals.showProcessing();
-	                    }
-	                });
-	            });
-	        });
-	    })(jQuery);
-</script>
-<script src="./jets.min.js"></script>
-}
+    	            //handle approve...
+    	            $(document).on('click.approve', '.btn-approve', function (e) {
+    	                e.preventDefault();
+    	                $.ajax({
+    	                    url: this.href,
+    	                    type: 'post',
+    	                    success: function (data, textStatus, jqXHR) {
+    	                        location.href = location.href;
+    	                    },
+    	                    error: function (jqXHR, textStatus, errorThrown) {
+    	                        mspModals.hideProcessing();
+    	                        alert(errorThrown);
+    	                    },
+    	                    beforeSend: function () {
+    	                        mspModals.showProcessing();
+    	                    }
+    	                });
+    	            });
+    	        });
+    	    })(jQuery);
+    </script>
+    <script src="./jets.min.js"></script>
+    }

@@ -45,9 +45,13 @@
 
   <ItemGroup>
     <Folder Include="Formatter\" />
+    <Folder Include="ControllerDI\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\summary.cs" />
+    <Compile Remove="Models\ControllerDI.cs" />
+    <Compile Remove="ControllerDI\ControllerDI.cs" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
     <Exec Command="bower install" />
