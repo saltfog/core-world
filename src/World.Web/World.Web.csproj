@@ -47,11 +47,13 @@
     <Folder Include="Formatter\" />
     <Folder Include="ControllerDI\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\summary.cs" />
     <Compile Remove="Models\ControllerDI.cs" />
     <Compile Remove="ControllerDI\ControllerDI.cs" />
+    <Compile Remove="Controllers\RoutingController.cs" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
     <Exec Command="bower install" />

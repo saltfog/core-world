@@ -1,31 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using World.Web.Repository;
 using Microsoft.Extensions.Configuration;
-using System.Threading;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using World.Web.Models;
 
 namespace World.Web.Controllers
 {
-    public class FilterController : Controller
+    public class HomeController : Controller
     {
         private readonly Repository.Repository _repo;
 
-        public FilterController(IConfiguration configuration)
+        public HomeController(IConfiguration configuration)
         {
             _repo = new Repository.Repository(configuration);
         }
 
-        // GET: /<controller>/
         public IActionResult Index()
+        {
+            return View(_repo.GetSummary());
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }
-
-
     }
 }

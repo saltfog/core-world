@@ -26,9 +26,7 @@ namespace World.Web.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-		[FormatFilter]
-		[HttpGet]
-		[HttpGet("/api/[controller].{format}")]
+
 		public IEnumerable<City> GetAll()
         {
 
@@ -43,11 +41,6 @@ namespace World.Web.Repository
             return list;
         }
 
-        public IEnumerable<FilterList> Filter()
-        {
-            var list = Connection.Query<FilterList>("select co.continent, co.name AS country, ci.name AS city from country co left join city ci on co.code = ci.countrycode order by co.continent, co.name, ci.name");
-            return list;
-        }
         public IEnumerable<LifeExp> LifeExp()
         {
             var list = Connection.Query<LifeExp>("select co.name AS country, MAX(co.lifeexpectancy) AS lifeexpectancy from country co group by co.name, co.lifeexpectancy order by co.lifeexpectancy DESC");
