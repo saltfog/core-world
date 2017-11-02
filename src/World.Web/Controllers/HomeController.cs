@@ -13,16 +13,21 @@ namespace World.Web.Controllers
 {
     public class HomeController : Controller
     {
-		private readonly Repository.Repository _repo;
+        private readonly Repository.Repository _repo;
 
         public HomeController(IConfiguration configuration)
-		{
-			_repo = new Repository.Repository(configuration);
-		}
-		// GET: /<controller>/
+        {
+            _repo = new Repository.Repository(configuration);
+        }
+
         public IActionResult Index()
         {
             return View(_repo.GetSummary());
+        }
+
+        public IActionResult KnockOut()
+        {
+            return View();
         }
     }
 }
