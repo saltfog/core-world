@@ -29,5 +29,10 @@ namespace World.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult KOAdvanced()
+        {
+            return View();
+        }
     }
 }

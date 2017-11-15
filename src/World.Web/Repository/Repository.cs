@@ -61,5 +61,12 @@ namespace World.Web.Repository
             var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS poulation from city ci join country co on ci.countrycode = co.code order by co.name, ci.name");
             return list.ToList();
 		}
+
+        public override bool Equals(object obj)
+        {
+            var repository = obj as Repository;
+            return repository != null &&
+                   EqualityComparer<IDbConnection>.Default.Equals(Connection, repository.Connection);
+        }
     }
 }
