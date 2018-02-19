@@ -27,7 +27,7 @@ namespace World.Web.Repository
             }
         }
 
-		public IEnumerable<City> GetAll()
+        public IEnumerable<City> GetAll()
         {
 
             var list = Connection.Query<City>("SELECT * FROM city");
@@ -47,7 +47,7 @@ namespace World.Web.Repository
             return list;
         }
 
-        public IEnumerable <Country> SearchCountry(string search)
+        public IEnumerable<Country> SearchCountry(string search)
         {
             if (search != null)
                 search = search.TrimStart('0').ToUpper();
@@ -57,16 +57,21 @@ namespace World.Web.Repository
             return (Connection.Query<Country>(query, new { search = search })).ToList();
         }
         public IEnumerable<SummaryPage> GetSummary()
-		{
-            var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS poulation from city ci join country co on ci.countrycode = co.code order by co.name, ci.name");
-            return list.ToList();
-		}
-
-        public override bool Equals(object obj)
         {
-            var repository = obj as Repository;
-            return repository != null &&
-                   EqualityComparer<IDbConnection>.Default.Equals(Connection, repository.Connection);
+            var list = Connection.Query<SummaryPage>("select ci.name as cities, co.name AS countries, ci.population AS population from city ci join country co on ci.countrycode = co.code order by co.name, ci.name");
+            return list.ToList();
+        }
+
+        public decimal GetCount()
+        {
+            var result = Connection.Query<decimal>("SELECT population FROM country");
+            return result.Sum();
+        }
+
+        public IEnumerable<Country> TotalCountries()
+        {
+            var result = Connection.Query<Country>("select * from country");
+            return result;
         }
     }
 }

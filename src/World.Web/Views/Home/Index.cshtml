@@ -12,10 +12,11 @@
       <tr>
         <th>Countries</th>
         <th>Cities</th>
+         <th>Population</th>               
       </tr>
     </thead>
     <tbody>
-      @foreach (var u in Model.OrderBy(u => u.countries).ThenBy(u => u.cities))
+      @foreach (var u in Model.OrderBy(u => u.countries).ThenBy(u => u.cities).ThenBy(u => u.population))
         {
 			<tr>		
             <td>
@@ -23,6 +24,9 @@
 			</td>
 		    <td>
                    <em> - @u.cities</em>
+           </td>
+                        <td>
+                   <em> @u.population</em>
            </td>
 		  </tr>
         }

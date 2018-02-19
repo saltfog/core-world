@@ -18,5 +18,10 @@ namespace World.Web.Controllers
         {
             return View(_repo.Cities());
         }
+
+        public IActionResult GetCount()
+        {
+            return ViewBag(_repo.GetCount());
+        }
     }
 }

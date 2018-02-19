@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
 using World.Web.Models;
 
 namespace World.Web.Controllers
@@ -25,9 +24,9 @@ namespace World.Web.Controllers
             return View(_repo.GetSummary());
         }
 
-        public IActionResult KnockOut()
+        public ViewResult List()
         {
-            return View();
+            return View(_repo.TotalCountries());
         }
 
         public IActionResult KOAdvanced()
